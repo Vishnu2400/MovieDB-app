@@ -1,5 +1,6 @@
 class Movie {
-    constructor(title, director, year, notes) {
+    constructor(id, title, director, year, notes) {
+        this.id = id;
         this.title = title;
         this.director = director;
         this.year = year;
