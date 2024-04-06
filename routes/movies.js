@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const moviesController = require('./controllers/MovieController');
+const moviesController = require('../Controllers/MovieController');
 const { body } = require('express-validator');
 
 /* GET movies listing. */
-router.get('/', MovieController.movies_list);
+router.get('/', moviesController.movies_list);
 
 /* GET movies add */
-router.get('/add', todosController.movies_create_get);
+router.get('/add', moviesController.movies_create_get);
 
 /* POST movies add */
 
 router.post('/add',
-  body('movieTitle').trim().notEmpty().withMessage('Movie title cannot be empty!'),
+  body('title').trim().notEmpty().withMessage('Movie title cannot be empty!'),
   body('director').trim().notEmpty().withMessage('Director name cannot be empty!'),
   body('year').trim().notEmpty().withMessage('Year cannot be empty!').isInt().withMessage('Year must be a valid number!'),
   body('notes').optional({ nullable: true }).trim(), // Optional notes field

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  p Use the form below to add a movie.
+  hr
+  if msg 
+    each val in msg 
+      ul 
+        li(class='redtext')= val.msg
+  form(method='POST' action='/movies/add')
+    label Title: 
+      | 
+      input(type='text' name='title') 
+    br
+    label Director: 
+      | 
+      input(type='text' name='director') 
+    br
+    label Release Year: 
+      | 
+      input(type='text' name='year') 
+    br
+    label Plot: 
+      | 
+      input(type='text' name='notes') 
+    br
+    button(type='submit') Add Movie
+    | 
+    a(href='/movies') Cancel

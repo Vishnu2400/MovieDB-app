@@ -1,9 +1,28 @@
 extends layout
 
 block content
-  h1= title
-  p= movie.text
-  div.movie-actions 
-    a(href=`/movies/${movie.id}/delete`) Delete movie
-    | 
-    a(href=`/movies/${movie.id}/edit`) Edit movie
+  .container
+    h1 Movie Details
+    if movie
+      table.table
+        tbody
+          tr
+            td Title:
+            td= movie.title
+          tr
+            td Director:
+            td= movie.director
+          tr
+            td Release Year:
+            td= movie.year
+          tr 
+            td Notes: 
+            td= movie.notes  
+          tr
+            td
+              form(action=`/movies/${movie.id}/delete`, method='GET')
+                button.btn-delete(type='submit') Delete
+            td
+              a.btn-edit(href=`/movies/${movie.id}/edit`) Edit
+    else
+      p Movie not found.

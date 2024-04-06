@@ -10,7 +10,7 @@ exports.movies_list = async function(req, res, next) {
   
   /* GET movies add */
   exports.movies_create_get = function(req, res, next) {
-    res.render('movies_add', { title: 'Add a movie'} );
+    res.render('movie_add', { title: 'Add a movie'} );
   };
   
   /* POST movies add */
@@ -18,7 +18,7 @@ exports.movies_list = async function(req, res, next) {
     //console.log(req.body);
     const result = validationResult(req);
     if (!result.isEmpty()) {
-        const newMovie = new Movie('', title, director, year, notes);
+      return res.render('movie_add', { title: 'Add a movie', msg: result.array() });
     } else {
         const { title, director, year, notes } = req.body;
         const newMovie = new Movie('', title, director, year, notes);
@@ -40,7 +40,7 @@ exports.movies_list = async function(req, res, next) {
   /* GET movies delete */
   exports.movies_delete_get = async function(req, res, next) {
     const movie = await moviesRepo.findById(req.params.uuid);
-    res.render('movies_delete', { title: 'Delete movie', movie: movie} );
+    res.render('movie_delete', { title: 'Delete movie', movie: movie} );
   };
   
   /* POST movies delete */
@@ -52,15 +52,15 @@ exports.movies_list = async function(req, res, next) {
   /* GET movies edit */
   exports.movies_edit_get  = async function(req, res, next) {
     const movie = await moviesRepo.findById(req.params.uuid);
-    res.render('movies_edit', { title: 'Edit Movie', movie });
+    res.render('movie_edit', { title: 'Edit Movie', movie });
   }
   
   /* POST movies edit */
   exports.movies_edit_post  = async function(req, res, next) {
     //console.log(req.body);
-    if (req.body.movieTitle.trim() === '') {
+    if (req.body.title.trim() === '') {
         const movie = await moviesRepo.findById(req.params.uuid);
-        res.render('movies_edit', { title: 'Edit Movie', msg: 'Movie title cannot be empty!', movie });
+        res.render('movie_edit', { title: 'Edit Movie', msg: 'Movie title cannot be empty!', movie });
     } else {
         const updatedMovie = new Movie(req.params.uuid, req.body.movieTitle, req.body.director, req.body.year, req.body.notes);
         // Call the update method of the moviesRepo to update the movie

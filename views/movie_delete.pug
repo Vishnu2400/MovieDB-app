@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p Are you sure you want to delete the following Movie?
+  hr
+  form(method='POST' action=`/movie/${movie.id}/delete`)
+    button(type='submit') Confirm Delete
+    | 
+    a(href=`/movies/${todo.id}`) Cancel
