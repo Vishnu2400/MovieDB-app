@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p= movie.text
+  div.movie-actions 
+    a(href=`/movies/${movie.id}/delete`) Delete movie
+    | 
+    a(href=`/movies/${movie.id}/edit`) Edit movie
