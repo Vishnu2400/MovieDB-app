@@ -7,41 +7,138 @@ a {
   color: #00B7FF;
 }
 
-/* Custom CSS for movie grid layout */
-
-/* Grid container */
-.movie-grid {
+.row.row-cols-1.row-cols-md-5 {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Five columns with equal width */
-  grid-gap: 20px; /* Adjust the gap between grid items */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  overflow-y: auto;
+  height: fit-content;
 }
 
-/* Style for movie card */
 .card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
+  position: relative;
+  padding: 5px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Style for movie title */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, #f7f7f7, #e0e0e0, #cccccc);
+  border-radius: inherit;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
 .card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
+  margin-bottom: 0.75rem;
 }
 
-/* Style for movie details */
-.card-text {
-  font-size: 1rem;
-}
-
-/* Style for movie actions */
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Style for buttons */
 .btn {
-  margin-right: 5px; /* Adjust margin between buttons */
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
+
+.btn:hover {
+  background-color: #00bfff;
+  background-color: rgba(0, 191, 255, 0.8);
+  /* Reduce opacity for a lighter effect */
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: lighten(#dc3545, 10%);
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: lighten(#ffc107, 10%);
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: lighten(#0d6efd, 10%);
+}
+
+/* Target elements within the movie_add Pug file */
+.movie_add {
+  text-align: center;
+  /* Center the content */
+}
+
+.movie_add form {
+  display: flex;
+  /* Arrange form elements horizontally */
+  flex-direction: column;
+  /* Stack form elements vertically */
+  gap: 1rem;
+  /* Add space between form elements */
+}
+
+.movie_add label {
+  display: block;
+  /* Place labels on separate lines */
+  text-align: left;
+  /* Align labels to the left */
+}
+
+.movie_add input[type="text"],
+.movie_add textarea {
+  width: 100%;
+  /* Set input width to full width */
+  padding: 0.5rem;
+  /* Add padding to inputs */
+  border: 1px solid #ccc;
+  /* Add border to inputs */
+}
+
+.movie_add button {
+  /* Styles for both Add Movie and Cancel buttons */
+  margin-top: 1rem;
+  /* Add space above buttons */
+}
+
+.movie_add button[type="submit"] {
+  /* Styles specific to the Add Movie button */
+  background-color: #0d6efd;
+  /* Blue background */
+  color: #fff;
+  /* White text */
+  border: none;
+  /* Remove default border */
+  padding: 0.5rem 1rem;
+  /* Add padding */
+  border-radius: 0.5rem;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Indicate clickable behavior */
+}
+

@@ -1,21 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p Use the form below to edit this movie.
-  hr
-  if msg 
-    p(class='redtext')= msg
-  form(method='POST' action=`/movies/${movie.id}/edit`)
-    input(type='text' name='title' value=movie.title)
-    br
-    input(type='text' name='director' value=movie.director)
-    br
-    input(type='text' name='year' value=movie.year)
-    br
-    textarea(name='notes', style='height: auto: overflow: auto;')= movie.notes
-    br
-    | 
-    button(type='submit') Save Changes
-    | 
-    a(href='/movies') Cancel
+  .container
+    h1= title  
+    p Use the form below to edit this movie.
+    hr
+    if msg  
+      each val in msg
+        ul
+          li(class='redtext')= val.msg
+    form(method='POST' action=`/movies/${movie.id}/edit`)
+      label Title:
+      |
+      input(type='text' name='title' id='title' value=movie.title)
+      br
+      label Director:
+      |
+      input(type='text' name='director' id='director' value=movie.director)
+      br
+      label Release Year:
+      |
+      input(type='text' name='year' id='year' value=movie.year)
+      br
+      label Plot:
+      |
+      textarea(name='notes' id='notes' style='height: auto; overflow: auto;')= movie.notes
+      br
+      button.btn.btn-primary(type='submit') Save Changes
+      a.btn.btn-secondary(href='/movies') Cancel

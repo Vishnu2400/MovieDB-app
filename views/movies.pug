@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 All Movies
-  a.btn-link(href='/movies/add') Add Movie
+  button.btn.btn-primary(type='button', onclick=`location.href='/movies/add'`) Add Movie
 
   br
   br
@@ -17,8 +17,8 @@ block content
             p.card-text Director: #{movie.director}
             p.card-text Release Year: #{movie.year ? movie.year : 'N/A'}
           .card-footer
-            a.btn.btn-primary(href=`/movies/${movie.id}`) View
-            | &nbsp; <!-- Add non-breaking space for spacing -->
-            a.btn.btn-warning(href=`/movies/${movie.id}/edit`) Edit
-            form(action=`/movies/${movie.id}/delete` method='GET')
-              button.btn.btn-danger(type='submit') Delete
+            button.btn.btn-primary(type='button', onclick=`location.href='/movies/${movie.id}'`) View
+            | &nbsp;
+            button.btn.btn-warning(type='button', onclick=`location.href='/movies/${movie.id}/edit'`) Edit
+            | &nbsp;
+            button.btn.btn-danger(type='submit') Delete
