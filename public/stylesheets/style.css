@@ -6,3 +6,42 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* Custom CSS for movie grid layout */
+
+/* Grid container */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Five columns with equal width */
+  grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+/* Style for movie card */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Style for movie title */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Style for movie details */
+.card-text {
+  font-size: 1rem;
+}
+
+/* Style for movie actions */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style for buttons */
+.btn {
+  margin-right: 5px; /* Adjust margin between buttons */
+}

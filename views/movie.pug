@@ -24,5 +24,8 @@ block content
                 button.btn-delete(type='submit') Delete
             td
               a.btn-edit(href=`/movies/${movie.id}/edit`) Edit
+        tr
+          td(colspan="2")
+            a.btn.btn-secondary(href="/movies") Back to Movies
     else
       p Movie not found.

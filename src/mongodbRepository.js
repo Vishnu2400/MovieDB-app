@@ -1,5 +1,5 @@
 const { MongoClient, ObjectId } = require('mongodb');
-const Movie = require('../src/Movie');
+const Movie = require('./Movie');
 
 const url = process.env.MONGODB_URL;
 
@@ -24,10 +24,19 @@ const repo = {
         return movies;
     },
     findById: async (uuid) => {
-        const moviesColl = client.db('moviesDBmongodb').collection('movies');
-        const filter = {_id: new ObjectId(uuid)};
-        const doc = await moviesColl.findOne(filter);
-        return new Movie(doc._id.toString(), doc.title, doc.director, doc.year, doc.notes);
+        try {
+            const moviesColl = client.db('moviesDBmongodb').collection('movies');
+            const filter = {_id: new ObjectId(uuid)};
+            const doc = await moviesColl.findOne(filter);
+            if (doc) {
+                return new Movie(doc._id.toString(), doc.title, doc.director, doc.year, doc.notes);
+            } else {
+                throw new Error('Movie not found');
+            }
+        } catch (error) {
+            console.error('Error in findById:', error);
+            throw error; // Propagate the error 
+        }
     },
     create: async (movie) => {
         const doc = {title: movie.title, director: movie.director, year: movie.year, notes: movie.notes};
@@ -36,16 +45,22 @@ const repo = {
         console.log(`A document was inserted with the _id: ${result.insertedId}`);
     },
     deleteById: async (uuid) => {
-        const moviesColl = client.db('moviesDBmongodb').collection('movies');
-        const filter = {_id: new ObjectId(uuid)};
-        const result = await moviesColl
-        .deleteOne(filter);
-        if (result.deletedCount === 1) {
-            console.log('Successfully delted one document');
-        } else {
-            console.log('No documents matched the query. Deleted 0 documents');
+        try {
+            const moviesColl = client.db('moviesDBmongodb').collection('movies');
+            const filter = { _id: new ObjectId(uuid) };
+            const result = await moviesColl.deleteOne(filter);
+            
+            if (result.deletedCount === 1) {
+                console.log('Successfully deleted one document');
+            } else {
+                console.log('No documents matched the query. Deleted 0 documents');
+            }
+        } catch (error) {
+            console.error('Error in deleteById:', error);
+            throw error; // Propagate the error 
         }
     },
+    
     update: async (movie) => {
         const moviesColl = client.db('moviesDBmongodb').collection('movies');
         const filter = {_id: new ObjectId(movie.id)};

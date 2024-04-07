@@ -62,7 +62,7 @@ exports.movies_list = async function(req, res, next) {
         const movie = await moviesRepo.findById(req.params.uuid);
         res.render('movie_edit', { title: 'Edit Movie', msg: 'Movie title cannot be empty!', movie });
     } else {
-        const updatedMovie = new Movie(req.params.uuid, req.body.movieTitle, req.body.director, req.body.year, req.body.notes);
+        const updatedMovie = new Movie(req.params.uuid, req.body.title, req.body.director, req.body.year, req.body.notes);
         // Call the update method of the moviesRepo to update the movie
         await moviesRepo.update(updatedMovie);
         // Redirect the user to the movies list page after successfully updating the movie

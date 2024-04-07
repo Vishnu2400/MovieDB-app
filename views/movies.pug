@@ -8,18 +8,17 @@ block content
   br
   hr
 
-  .row
+  .row.row-cols-1.row-cols-md-5
     each movie in movies
-      .col-md-4.mb-4
+      .col.mb-4
         .card
           .card-body
             h5.card-title= movie.title
             p.card-text Director: #{movie.director}
             p.card-text Release Year: #{movie.year ? movie.year : 'N/A'}
           .card-footer
-           a.btn.btn-primary(href=`/movies/${movie.id}`) View
-           | &nbsp; <!-- Add non-breaking space for spacing -->
-           a.btn.btn-warning(href=`/movies/${movie.id}/edit`) Edit
-
+            a.btn.btn-primary(href=`/movies/${movie.id}`) View
+            | &nbsp; <!-- Add non-breaking space for spacing -->
+            a.btn.btn-warning(href=`/movies/${movie.id}/edit`) Edit
             form(action=`/movies/${movie.id}/delete` method='GET')
               button.btn.btn-danger(type='submit') Delete
