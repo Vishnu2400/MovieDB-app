@@ -1,13 +1,15 @@
 extends layout
 
 block content
+  .intro-section
+    h1.ITMD542-title ITMD542 LAB4
+    h1.movie-app-title Movie Application
 
-  h1 ITMD542 LAB4 
-  h1 Movie Application 
-  
-  p
-    | This is a simple movie database management application built with Node.js and Express.
-    | You can find movies.
-  p
-    | To get started, click the link below:
-  a(href='/movies') View Movies
+    p.intro-text
+      | This is a simple movie database management application built with Node.js and Express.
+      | You can find movies.
+
+    p.intro-text
+      | To get started, click the button below:
+      
+    a.btn.btn-primary(href='/movies') View Movies
