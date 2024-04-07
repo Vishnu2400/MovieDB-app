@@ -89,56 +89,255 @@ a {
 }
 
 /* Target elements within the movie_add Pug file */
+/* CSS for Movie Add Page */
+
 .movie_add {
-  text-align: center;
-  /* Center the content */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.movie_add form {
-  display: flex;
-  /* Arrange form elements horizontally */
-  flex-direction: column;
-  /* Stack form elements vertically */
-  gap: 1rem;
-  /* Add space between form elements */
+.movie_add h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.movie_add label {
-  display: block;
-  /* Place labels on separate lines */
-  text-align: left;
-  /* Align labels to the left */
+.movie_add p {
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-.movie_add input[type="text"],
-.movie_add textarea {
+.movie_add hr {
+  margin-bottom: 20px;
+}
+
+.movie_add .redtext {
+  color: red;
+}
+
+.movie_add form label {
+  font-weight: bold;
+}
+
+.movie_add form input[type="text"],
+.movie_add form textarea {
   width: 100%;
-  /* Set input width to full width */
-  padding: 0.5rem;
-  /* Add padding to inputs */
+  padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
-  /* Add border to inputs */
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.movie_add button {
-  /* Styles for both Add Movie and Cancel buttons */
-  margin-top: 1rem;
-  /* Add space above buttons */
+.movie_add form textarea {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
 }
 
-.movie_add button[type="submit"] {
-  /* Styles specific to the Add Movie button */
-  background-color: #0d6efd;
-  /* Blue background */
+.movie_add form button[type="submit"],
+.movie_add form button[type="button"] {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #007bff;
   color: #fff;
-  /* White text */
   border: none;
-  /* Remove default border */
-  padding: 0.5rem 1rem;
-  /* Add padding */
-  border-radius: 0.5rem;
-  /* Rounded corners */
+  border-radius: 5px;
   cursor: pointer;
-  /* Indicate clickable behavior */
 }
 
+.movie_add form button[type="submit"]:hover,
+.movie_add form button[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* Movie view container */
+.movie_view {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Movie details table */
+.movie_view .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.movie_view .table td,
+.movie_view .table th {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.movie_view .table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Movie delete button */
+.movie_view .btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.movie_view .btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Movie edit button */
+.movie_view .btn-edit {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.movie_view .btn-edit:hover {
+  background-color: #e0a800;
+}
+
+/* Back to Movies button */
+.movie_view .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.movie_view .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+
+/* CSS for Movie Edit Page */
+
+.container.movie_edit {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container.movie_edit h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.container.movie_edit p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.container.movie_edit hr {
+  margin-bottom: 20px;
+}
+
+.container.movie_edit .redtext {
+  color: red;
+}
+
+.container.movie_edit form label {
+  font-weight: bold;
+}
+
+.container.movie_edit form input[type="text"],
+.container.movie_edit form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.container.movie_edit form textarea {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.container.movie_edit form button[type="submit"],
+.container.movie_edit form a.btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container.movie_edit form button[type="submit"]:hover,
+.container.movie_edit form a.btn-secondary:hover {
+  background-color: #0056b3;
+}
+
+.confirm-delete {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.confirm-delete h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.confirm-delete p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.confirm-delete form {
+  display: inline-block;
+}
+
+.confirm-delete button[type="submit"],
+.confirm-delete a {
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-delete button[type="submit"] {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.confirm-delete button[type="submit"]:hover {
+  background-color: #c82333;
+}
+
+.confirm-delete a {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.confirm-delete a:hover {
+  background-color: #5a6268;
+}

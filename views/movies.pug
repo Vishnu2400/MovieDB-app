@@ -21,4 +21,5 @@ block content
             | &nbsp;
             button.btn.btn-warning(type='button', onclick=`location.href='/movies/${movie.id}/edit'`) Edit
             | &nbsp;
-            button.btn.btn-danger(type='submit') Delete
+            form(action=`/movies/${movie.id}/delete`, method='GET', style='display: inline;')
+              button.btn.btn-danger(type='submit') Delete
